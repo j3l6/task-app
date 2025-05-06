@@ -1,0 +1,8 @@
+# Backend
+.env
+__pycache__
+
+# Frontend
+node_modules
+.env.local
+build/
