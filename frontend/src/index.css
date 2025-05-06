@@ -1,0 +1,9 @@
+body { font-family: Arial, sans-serif; margin: 20px; }
+.container { max-width: 600px; margin: 0 auto; }
+.input-group { display: flex; gap: 10px; margin-bottom: 20px; }
+input { flex: 1; padding: 8px; font-size: 16px; }
+button { padding: 8px 16px; background: #007bff; color: white; border: none; cursor: pointer; }
+.task-list { list-style: none; padding: 0; }
+.task-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border: 1px solid #ddd; margin-bottom: 8px; }
+.delete-btn { background: #dc3545; }
+.delete-btn:hover { background: #bb2d3b; }
