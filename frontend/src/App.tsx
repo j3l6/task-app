@@ -44,6 +44,12 @@ function App() {
     </svg>
   );
 
+  const TrashIcon = () => (
+    <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em">
+      <path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm10.618-3L15 2H9L7.382 4H3v2h18V4z"></path>
+    </svg>
+  );
+
   const deleteTask = async (id: string) => {
     try {
       await axios.delete(`${API_URL}/tasks/${id}`);
@@ -61,7 +67,7 @@ function App() {
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
           placeholder="New task..."
-          onKeyPress={(e) => e.key === 'Enter' && addTask()}
+          onKeyDown={(e) => e.key === 'Enter' && addTask()}
         />
         <button onClick={addTask}><PlusIcon /> Add</button>
 
@@ -71,7 +77,7 @@ function App() {
           <li key={task._id} className="task-item">
             <span>{task.title}</span>
             <button onClick={() => deleteTask(task._id)} className="delete-btn">
-              <FaTrash />
+            <TrashIcon />
             </button>
           </li>
         ))}
