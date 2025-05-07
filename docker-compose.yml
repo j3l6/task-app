@@ -23,7 +23,7 @@ services:
     image: mongo:6
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin   # <-- Cambiar si quieres
-      MONGO_INITDB_ROOT_PASSWORD: pass123 # <-- Cambiar en producción!
+      MONGO_INITDB_ROOT_PASSWORD: Panchito1234 # <-- Cambiar en producción!
     volumes:
       - mongodb_data:/data/db
 
