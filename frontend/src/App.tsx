@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaTrash, FaPlus } from 'react-icons/fa';
+import { FaTrash } from 'react-icons/fa';
+
 
 interface Task {
   _id: string;
@@ -37,6 +38,12 @@ function App() {
     }
   };
 
+  const PlusIcon = () => (
+    <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em">
+      <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
+    </svg>
+  );
+
   const deleteTask = async (id: string) => {
     try {
       await axios.delete(`${API_URL}/tasks/${id}`);
@@ -56,7 +63,8 @@ function App() {
           placeholder="New task..."
           onKeyPress={(e) => e.key === 'Enter' && addTask()}
         />
-        <button onClick={addTask}><FaPlus /> Add</button>
+        <button onClick={addTask}><PlusIcon /> Add</button>
+
       </div>
       <ul className="task-list">
         {tasks.map(task => (

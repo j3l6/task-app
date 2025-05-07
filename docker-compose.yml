@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URI=${MONGO_URI}  # <-- Usará el valor del .env
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"  # Nginx usa el puerto 80
+    depends_on:
+      - backend
+
+  mongo:
+    image: mongo:6
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin   # <-- Cambiar si quieres
+      MONGO_INITDB_ROOT_PASSWORD: pass123 # <-- Cambiar en producción!
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
