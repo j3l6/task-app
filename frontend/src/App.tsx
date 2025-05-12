@@ -25,7 +25,10 @@ function App() {
     }
   };
 
-  useEffect(() => { fetchTasks() }, []);
+
+
+  //useEffect(() => { fetchTasks() }, []); se cambia para online
+  useEffect(() => { fetchTasks() }, [fetchTasks]);
 
   const addTask = async () => {
     if (!newTask.trim()) return;
