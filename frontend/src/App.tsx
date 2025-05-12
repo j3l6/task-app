@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 // import { FaTrash } from 'react-icons/fa'; se elimna no se usa
 
@@ -16,6 +16,18 @@ function App() {
   // ¡CAMBIAR EN PRODUCCIÓN!
   const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
+  
+  // se agrega para online
+  const fetchTasks = useCallback(async () => {
+  try {
+    const response = await axios.get(`${API_URL}/tasks`);
+    setTasks(response.data);
+  } catch (error) {
+    console.error("Error fetching tasks:", error);
+  }
+}, [API_URL]); // Dependencias necesarias
+
+  /* local
   const fetchTasks = async () => {
     try {
       const response = await axios.get(`${API_URL}/tasks`);
@@ -23,7 +35,7 @@ function App() {
     } catch (error) {
       console.error("Error fetching tasks:", error);
     }
-  };
+  }; */
 
 
 
